@@ -1,3 +1,32 @@
+<?php
+ 
+// Starting the session, to use and
+// store data in session variable
+session_start();
+  
+// If the session variable is empty, this
+// means the user is yet to login
+// User will be sent to 'login.php' page
+// to allow the user to login
+if (!isset($_SESSION['phone'])) {
+    $_SESSION['msg'] = "You have to log in first";
+    //header('location: login.php');
+} else {
+  //header('location: index.php');
+}
+  
+// Logout button will destroy the session, and
+// will unset the session variables
+// User will be headed to 'login.php'
+// after logging out
+if (isset($_GET['logout'])) {
+    session_destroy();
+    unset($_SESSION['phone']);
+    header("location: login.php");
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,71 +95,26 @@
         </li><!-- End Search Icon-->
 
         <li>
-          <a href="./index.php?page=save_user"><button class="btn btn-primary">Sign in</button></a>
+          <a href="save_user.php"><button class="btn btn-primary">Sign in</button></a>
         </li>
 
         <li class="nav-item dropdown">
 
-          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-            <i class="bi bi-bell"></i>
-            <span class="badge bg-primary badge-number">4</span>
-          </a><!-- End Notification Icon -->
-
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-            <li class="dropdown-header">
-              You have 4 new notifications
-              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
-            </li>
             <li>
               <hr class="dropdown-divider">
-            </li>
-
-            <li class="notification-item">
-              <i class="bi bi-exclamation-circle text-warning"></i>
-              <div>
-                <h4>Message de Ngueffo Sama</h4>
-                <p>cliquer sur message pour voir</p>
-                <p>30 min. ago</p>
-              </div>
             </li>
 
             <li>
               <hr class="dropdown-divider">
             </li>
 
-            <li class="notification-item">
-              <i class="bi bi-check-circle text-success"></i>
-              <div>
-                <h4>Resultat du projet</h4>
-                <p>Avancement du projet a 97%</p>
-                <p>1 hr. ago</p>
-              </div>
-            </li>
-
             <li>
               <hr class="dropdown-divider">
             </li>
 
-            <li class="notification-item">
-              <i class="bi bi-x-circle text-danger"></i>
-              <div>
-              <h4>Resultat du projet</h4>
-                <p>Avancement du projet a 60%</p>
-                <p>2 hrs. ago</p>
-              </div>
-            </li>
-
             <li>
               <hr class="dropdown-divider">
-            </li>
-
-            <li class="notification-item">
-              <i class="bi bi-info-circle text-primary"></i>
-              <div>
-                <h4>Echeance du projet</h4>
-                <p>Echeance du projet dans quelque heures il ne vous restent plus beaucoup de temps</p>
-                <p>4 hrs. ago</p>
-              </div>
             </li>
 
             <li>
@@ -145,58 +129,15 @@
         </li><!-- End Notification Nav -->
 
         <li class="nav-item dropdown">
-
-          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-            <i class="bi bi-chat-left-text"></i>
-            <span class="badge bg-success badge-number">3</span>
-          </a><!-- End Messages Icon -->
-
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
-            <li class="dropdown-header">
-              You have 3 new messages
-              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+            <li>
+              <hr class="dropdown-divider">
             </li>
             <li>
               <hr class="dropdown-divider">
             </li>
-
-            <li class="message-item">
-              <a href="#">
-                <img src="assets/img/messages-1.jpg" alt="" class="rounded-circle">
-                <div>
-                  <h4>Ngeffo Sama</h4>
-                  <p>Salut!</p>
-                  <p>4 hrs. ago</p>
-                </div>
-              </a>
-            </li>
             <li>
               <hr class="dropdown-divider">
-            </li>
-
-            <li class="message-item">
-              <a href="#">
-                <img src="assets/img/messages-1.jpg" alt="" class="rounded-circle">
-                <div>
-                  <h4>Ngueffo Sama</h4>
-                  <p>Tu es a quel niveau de ton cote par rapport au projet de groupe</p>
-                  <p>6 hrs. ago</p>
-                </div>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li class="message-item">
-              <a href="#">
-                <img src="assets/img/messages-1.jpg" alt="" class="rounded-circle">
-                <div>
-                  <h4>Ngueffo Sama</h4>
-                  <p>Moi de mon cote j'avance . j'ai meme deja preque terminer</p>
-                  <p>8 hrs. ago</p>
-                </div>
-              </a>
             </li>
             <li>
               <hr class="dropdown-divider">
@@ -213,14 +154,14 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">N. Maxime</span>
+            <img src="./assets/Sign up-amico.svg" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2">G. Mambou</span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>Maxime Nokize</h6>
-              <span>Web Designer</span>
+              <h6>Groupe Mambou</h6>
+              <span>Projet de groupe</span>
             </li>
             <li>
               <hr class="dropdown-divider">
@@ -285,7 +226,7 @@
 
       <li class="nav-item">
         <a href="./index.php?page=save_produit" class="nav-link collapsed">
-          <i class="bi bi-circle"></i><span>Ajouter un produit</span>
+          <i class="bi bi-bag-plus"></i><span>Ajouter un produit</span>
         </a>
         <!--<ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
@@ -320,7 +261,7 @@
 
       <li class="nav-item">
         <a href="./index.php?page=listProduits" class="nav-link collapsed">
-          <i class="bi bi-circle"></i><span>Mon stock</span>
+          <i class="bi bi-bag"></i><span>Mon stock</span>
         </a>
         <!--<ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
@@ -354,7 +295,7 @@
 
       <li class="nav-item">
         <a href="./index.php?page=listProduits" class="nav-link collapsed">
-          <i class="bi bi-circle"></i><span>Produits vendu</span>
+          <i class="bi bi-bag-check-fill"></i><span>Produits vendu</span>
         </a>
         <!--<ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
@@ -388,7 +329,7 @@
 
       <li class="nav-item">
         <a href="./index.php?page=listProduits" class="nav-link collapsed">
-          <i class="bi bi-circle"></i><span>Achat</span>
+          <i class="bi bi-currency-euro"></i><span>Achat</span>
         </a>
         <!--<ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
@@ -422,7 +363,7 @@
 
       <li class="nav-item">
         <a href="./index.php?page=listProduits" class="nav-link collapsed">
-          <i class="bi bi-circle"></i><span>Produits achete</span>
+          <i class="bi bi-basket2"></i><span>Produits achete</span>
         </a>
         <!--<ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
