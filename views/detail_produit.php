@@ -57,7 +57,8 @@
             echo '<p><span style="font-style: bolder;">Nom : <span>'.$row["productName"].'</p>';
             echo '<p><span style="font-style: bolder;">Prix U : <span>'.$row["price"].'</p>';
             echo '<p><span style="font-style: bolder;">Quantité : <span>'.$row["qStock"].'</p>';
-            echo '<div><span style="font-style: bolder;">Ajouté le : <span>'.$row["createdDate"].'</div></div></div>';
+            echo '<div><span style="font-style: bolder;">Ajouté le : <span>'.$row["createdDate"].'</div>
+            <a href""></a></div></div>';
             $i++;
           } 
         ?>
